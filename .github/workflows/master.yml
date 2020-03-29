@@ -20,13 +20,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install build-essential
+        sudo apt-cache search qt5
     - name: configure on ${{ matrix.os }}
       env:
         CC: gcc-9
         CXX: g++-9
         CI: true
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=ON
     - name: build on ${{ matrix.os }}
       run: cmake --build build
 
@@ -40,11 +41,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: update ${{ matrix.os }}
+      run: |
+        sudo brew search qt5
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=ON
     - name: build on ${{ matrix.os }}
       run: cmake --build build
 
@@ -55,13 +59,15 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-
     steps:
     - uses: actions/checkout@v1
+    - name: update ${{ matrix.os }}
+      run: |
+        vcpkg install qt5:x64-windows
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=ON
     - name: build on ${{ matrix.os }}
       run: cmake --build build
