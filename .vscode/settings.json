@@ -1,0 +1,10 @@
+{
+  "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/source/include",
+    "${workspaceFolder}/build/source/include"
+  ],
+  "clang-format.executable": "/usr/lib/llvm/10/bin/clang-format",
+  "C_Cpp.clang_format_path": "/usr/lib/llvm/10/bin/clang-format",
+  "C_Cpp.clang_format_sortIncludes": true
+}

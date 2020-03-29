@@ -1,0 +1,24 @@
+#pragma once
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include <cstdint>
+#include <string>
+
+namespace application {
+  const std::string PROJECT_NAME          = "@CMAKE_PROJECT_NAME@";
+  const std::string PROJECT_DESCRIPTION   = "@CMAKE_PROJECT_DESCRIPTION@";
+  const std::string PROJECT_COMMIT_BRANCH = "@PROJECT_COMMIT_BRANCH@";
+  const std::string PROJECT_COMMIT_ID     = "@PROJECT_COMMIT_ID@";
+
+  // clang-format off
+  const uint16_t PROJECT_VERSION_MAJOR = @PROJECT_VERSION_MAJOR@;
+  const uint16_t PROJECT_VERSION_MINOR = @PROJECT_VERSION_MINOR@;
+  const uint16_t PROJECT_VERSION_PATCH = @PROJECT_VERSION_PATCH@;
+
+  const std::string PROJECT_VERSION     = "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@";
+  // clang-format on
+
+} // namespace application
+
+#endif // CONFIG_H
