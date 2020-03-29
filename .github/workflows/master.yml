@@ -19,7 +19,7 @@ jobs:
     - name: update ${{ matrix.os }}
       run: |
         sudo apt-get update
-        sudo apt-get install build-essential
+        sudo apt-get install build-essential qtbase5-dev
         sudo apt-cache search libqt5
     - name: configure on ${{ matrix.os }}
       env:
