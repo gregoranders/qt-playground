@@ -20,6 +20,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install build-essential
+        sudo apt-cache search qt5
     - name: configure on ${{ matrix.os }}
       env:
         CC: gcc-9
@@ -40,6 +41,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: update ${{ matrix.os }}
+      run: |
+        sudo brew search qt5
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
@@ -55,9 +59,11 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-
     steps:
     - uses: actions/checkout@v1
+    - name: update ${{ matrix.os }}
+      run: |
+        vcpkg install qt5:x64-windows
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
