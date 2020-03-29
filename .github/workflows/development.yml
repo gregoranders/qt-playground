@@ -44,9 +44,12 @@ jobs:
     - name: update ${{ matrix.os }}
       run: |
         brew install qt5
+        echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
+        LDFLAGS: -L/usr/local/opt/qt/lib
+        CPPFLAGS: -I/usr/local/opt/qt/include
       run: |
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON
     - name: build on ${{ matrix.os }}
