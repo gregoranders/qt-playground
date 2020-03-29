@@ -19,7 +19,8 @@ jobs:
     - name: update ${{ matrix.os }}
       run: |
         sudo apt-get update
-        sudo apt-get install build-essential qtbase5-dev clang-tools-9
+        sudo apt-get install build-essential qtbase5-dev clang-tools-9 libc++-dev libc++1 libc++abi-dev libc++abi1
+        sudo apt-cache search libc++
     - name: configure on ${{ matrix.os }}
       env:
         CC: clang-9
