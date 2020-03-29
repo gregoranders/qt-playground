@@ -20,7 +20,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install build-essential
-        sudo apt-cache search qt5
+        sudo apt-cache search libqt5
     - name: configure on ${{ matrix.os }}
       env:
         CC: gcc-9
