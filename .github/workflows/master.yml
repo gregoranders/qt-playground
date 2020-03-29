@@ -19,7 +19,7 @@ jobs:
     - name: update ${{ matrix.os }}
       run: |
         sudo apt-get update
-        sudo apt-get install build-essential qtbase5-dev
+        sudo apt-get install build-essential qtbase5-dev clang-tools-9
     - name: configure on ${{ matrix.os }}
       env:
         CC: gcc-9
