@@ -54,23 +54,3 @@ jobs:
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_PREFIX_PATH=$(brew --prefix qt5)
     - name: build on ${{ matrix.os }}
       run: cmake --build build
-
-  windows:
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [windows-latest]
-    steps:
-    - uses: actions/checkout@v1
-    - name: update ${{ matrix.os }}
-      run: |
-        vcpkg install qt5:x64-windows
-    - name: configure on ${{ matrix.os }}
-      env:
-        CI: true
-      run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON
-    - name: build on ${{ matrix.os }}
-      run: cmake --build build
