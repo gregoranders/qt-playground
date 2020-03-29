@@ -19,12 +19,11 @@ jobs:
     - name: update ${{ matrix.os }}
       run: |
         sudo apt-get update
-        sudo apt-get install build-essential qtbase5-dev clang-tools-9 libc++-dev libc++1 libc++abi-dev libc++abi1
-        sudo apt-cache search libc++
+        sudo apt-get install build-essential qtbase5-dev clang-tools-9 libc++-9-dev libc++1-9 libc++abi-9-dev libc++abi1-9
     - name: configure on ${{ matrix.os }}
       env:
-        CC: gcc-9
-        CXX: g++-9
+        CC: clang-9
+        CXX: clang++-9
         CI: true
       run: |
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=ON
