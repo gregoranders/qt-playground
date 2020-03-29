@@ -22,8 +22,8 @@ jobs:
         sudo apt-get install build-essential qtbase5-dev
     - name: configure on ${{ matrix.os }}
       env:
-        CC: gcc-9
-        CXX: g++-9
+        CC: clang-9
+        CXX: clang++-9
         CI: true
       run: |
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON
