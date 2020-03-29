@@ -51,7 +51,7 @@ jobs:
         LDFLAGS: -L/usr/local/opt/qt/lib
         CPPFLAGS: -I/usr/local/opt/qt/include
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=ON
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_PREFIX_PATH=$(brew --prefix qt5)
     - name: build on ${{ matrix.os }}
       run: cmake --build build
 
