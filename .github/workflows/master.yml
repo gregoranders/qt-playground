@@ -43,7 +43,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: update ${{ matrix.os }}
       run: |
-        brew search qt5
+        brew install qt5
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
