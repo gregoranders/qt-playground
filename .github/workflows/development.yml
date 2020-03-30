@@ -17,9 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: update ${{ matrix.os }}
-      run: |
-        sudo apt-get update
-        sudo apt-get install build-essential qtbase5-dev clang-tools-9 libc++-9-dev libc++1-9 libc++abi-9-dev libc++abi1-9
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '5.14.1'
     - name: configure on ${{ matrix.os }}
       env:
         CC: clang-9
@@ -41,16 +41,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: update ${{ matrix.os }}
-      run: |
-        brew install qt5
-        echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '5.14.1'
     - name: configure on ${{ matrix.os }}
       env:
         CI: true
-        LDFLAGS: -L/usr/local/opt/qt/lib
-        CPPFLAGS: -I/usr/local/opt/qt/include
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_PREFIX_PATH=$(brew --prefix qt5)
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON
     - name: build on ${{ matrix.os }}
       run: cmake --build build
 
