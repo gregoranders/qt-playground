@@ -78,11 +78,8 @@ jobs:
         aqtversion: '==0.8a4'
         py7zrversion: '==0.6b8'
     - name: configure on ${{ matrix.os }}
-      run: |
       env:
         CI: true
-        LDFLAGS: -L/usr/local/opt/qt/lib
-        CPPFLAGS: -I/usr/local/opt/qt/include
       run: |
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_PREFIX_PATH=$(brew --prefix qt5)
     - name: build on ${{ matrix.os }}
